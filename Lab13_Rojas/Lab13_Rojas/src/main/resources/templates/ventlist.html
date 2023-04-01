@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "/plantillas/plantillaprincipal  ::  maintempl">
+</head>
+<link rel="stylesheet" th:href="@{/style.css}" />
+<body>
+<nav th:replace = "/plantillas/plantillaprincipal  ::  bodyside"></nav>
+
+<table id="produ">
+   <tr>
+      <th>C'odigo</th>
+      <th>Fecha</th>
+      <th>C'odigo de Cliente</th>
+      <th>C'odigo de Producto</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+      <th>IGV</th>
+      <th>Total</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+   </tr>
+   <tr th:each="vn  :  ${ventastag}">
+      <td th:text="${vn.codigo}" ></td>
+      <td th:text="${vn.fecha}" ></td>
+      <td th:text="${vn.codigo_cli}" ></td>
+      <td th:text="${vn.codigo_produ}" ></td>
+      <td th:text="${vn.cantidad}" ></td>
+      <td th:text="${vn.subtotal}" ></td>
+      <td th:text="${vn.igv}" ></td>
+      <td th:text="${vn.total}" ></td>
+      <td><a th:href="@{/ventapage/formvent/}  + ${vn.codigo}"  th:text="Editar"></a></td>
+	  <td><a th:href="@{/ventapage/deletevent/}  + ${vn.codigo}"  th:text="Eliminar"  
+	  onclick="return confirm('Estas seguro de eliminar la venta')"></a></td>
+   </tr>
+</table>
+<br>
+<br>
+<a href="/ventapage/formvent">Registrar Venta</a>
+</body>
+</html>

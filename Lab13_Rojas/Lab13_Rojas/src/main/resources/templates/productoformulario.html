@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "/plantillas/plantillaprincipal  ::  maintempl">
+</head>
+<link rel="stylesheet" th:href="@{/style.css}" />
+<body>
+<nav th:replace = "/plantillas/plantillaprincipal  ::  bodyside"></nav>
+<br>
+<br>
+<form th:action = "@{/productospage/insertprod}"  th:object = "${producto}"  method="POST">
+    <label for="nombre"><b>Nombre  :</b></label>
+    <input type="text" th:field="*{nombre}" name="nombre"><br><br>
+    <label for="stock"><b>Stock     :</b></label>
+    <input type="number" th:field="*{stock}" name="stock"><br><br>
+    <label for="precio"><b>Precio  :</b></label>
+    <input type="number" step=".01" th:field="*{precio}"  name="precio"><br><br><br>
+    <input type="submit" th:value="${Regi}">
+</form>
+</body>
+</html>
+
+</body>

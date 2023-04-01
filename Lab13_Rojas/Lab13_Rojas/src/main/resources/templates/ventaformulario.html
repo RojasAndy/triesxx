@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/plantillas/plantillaprincipal  ::  maintempl">
+</head>
+<link rel="stylesheet" th:href="@{/style.css}" />
+<body>
+<nav th:replace="/plantillas/plantillaprincipal  ::  bodyside"></nav>
+<h3 th:if="ERROR!=null" th:text="${ERROR}" style="color:red"></h3>
+<form th:action="@{/ventapage/insertvent}"  th:object="${ventas}"  method="POST">
+    <label for="codigo"><b>Cliente  :</b></label>
+    <select th:field="*{codigo_cli}">
+        <option value=""> -- </option>
+        <option th:each = "clix : ${clpass}"  th:value="${clix.nombres}"  th:text = "${clix.nombres}" />   
+    </select><br><br>
+    
+    <label for="codigo"><b>Producto  :</b></label>
+    <select th:field="*{codigo_produ}">
+        <option value=""> -- </option>
+        <option th:each = "prox : ${prosp}"  th:value = "${prox.nombre}"  th:text = "${prox.nombre} +'  '+ ${prox.precio} + ' Soles'"/>
+    </select><br><br>
+    
+    <label for="cantidad"><b>Cantidad :</b></label>
+       <input type="text"  th:field="*{cantidad}"  name="cantidad"/><br><br>
+    <label for="igv"><b>IGV   :</b></label>   
+       <input readonly th:value=0.18  type="text"     name="igv"  ><br><br><br>
+       
+       <input type="submit"  th:value="${Regi3}" >
+</form>
+</body>
+</html>

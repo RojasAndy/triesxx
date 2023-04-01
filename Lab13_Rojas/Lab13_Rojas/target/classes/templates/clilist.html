@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/plantillas/plantillaprincipal :: maintempl">
+</head>
+   <link rel="stylesheet" th:href="@{/style.css}" />
+<body>
+<nav th:replace = "/plantillas/plantillaprincipal :: bodyside"></nav>
+
+<table id="produ">
+   <tr>
+       <th>C'odigo</th>
+       <th>Nombres</th>
+       <th>Apellidos</th>
+       <th>Direcci'on</th>
+       <th>DNI</th>
+       <th>Tel'efono</th>
+       <th>Editar</th>
+       <th>Eliminar</th>
+   </tr>
+   <tr th:each="identif : ${clientestag}">
+      <td th:text="${identif.codigo}"></td>
+      <td th:text="${identif.nombres}"></td>
+      <td th:text="${identif.apellidos}"></td>
+      <td th:text="${identif.direccion}"></td>
+      <td th:text="${identif.dni}"></td>
+      <td th:text="${identif.telefono}"></td>
+      <td><a th:href="@{/clientespage/formsubp/} + ${identif.codigo}"  th:text="Editar"></a></td>
+      <td><a th:href="@{/clientespage/elimsubp/} + ${identif.codigo}"  th:text="Eliminar" 
+      onclick="return confirm('Estas seguro que desea eliminar')"></a></td>
+   </tr>
+</table>
+<br>
+<br>
+<a href="/clientespage/formsubp">Registrar Cliente</a>
+</body>
+</html>

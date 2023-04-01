@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "/plantillas/plantillaprincipal  ::  maintempl">
+</head>
+<link rel="stylesheet" th:href="@{/style.css}" />
+<body>
+<nav th:replace = "/plantillas/plantillaprincipal  ::  bodyside"></nav>
+<br>
+<br>
+<form th:action="@{/clientespage/insertsubp}" th:object="${cliente}"  method="POST">
+  <label for="nombre"><b>Nombres   :</b></label>
+  <input type="text" th:field="*{nombres}" name="nombre"><br><br>
+  <label for="apellido"><b>Apellidos :</b></label>
+  <input type="text" th:field="*{apellidos}" name="apellido"><br><br>
+  <label for="dniy"><b>DNI        :</b></label>
+  <input type="number" th:field="*{dni}" name="dniy"><br><br>
+  <label for=telef><b>Telefono  :</b></label>
+  <input type="number" th:field="*{telefono}" name="telef"><br><br>
+  <label for="direcc"><b>Direcci'on :</b></label>
+  <input type="text" th:field="*{direccion}" name="direcc"><br><br><br>
+  <input type="submit" th:value="${Regi2}">
+</form>
+</body>
+</html>

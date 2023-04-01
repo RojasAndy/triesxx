@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/plantillas/plantillaprincipal  ::  maintempl">
+</head>
+<link rel="stylesheet" th:href="@{/style.css}" />
+<body>
+<nav th:replace = "/plantillas/plantillaprincipal  ::  bodyside"></nav>
+
+<table id="produ">
+   <tr>
+       <th>C'odigo</th>
+       <th>Nombre</th>
+       <th>Stock</th>
+       <th>Precio</th>
+       <th>Editar</th>
+       <th>Eliminar</th>
+   </tr>
+   <tr th:each="identif  :  ${productotag}">
+       <td th:text="${identif.codigo}"></td>
+       <td th:text="${identif.nombre}"></td>
+       <td th:text="${identif.stock}"></td>
+       <td th:text="${identif.precio}"></td>
+       <td><a th:href="@{/productospage/formproduct/} + ${identif.codigo}"  th:text="Editar"></a></td>
+       <td><a th:href="@{/productospage/elimiproduct/} + ${identif.codigo}" th:text="Eliminar" 
+       onclick="return confirm('Esta seguro que quiere eliminar el producto')"></a></td>
+   </tr>
+</table>
+<br>
+<br>
+<a href="/productospage/formproduct">Registrar Producto</a>
+</body>
